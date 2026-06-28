@@ -10,52 +10,6 @@ A production-grade hybrid recommendation system built with FastAPI and scikit-le
 
 This recommendation engine implements a **four-layer modular architecture** combining multiple recommendation strategies to solve the cold-start problem and keyword-matching limitations of traditional e-commerce search systems.
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         CLIENT LAYER (Frontend)                     │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────────┐ │
-│  │   Search UI  │  │  Filters UI  │  │  Product Display Grid    │ │
-│  └──────┬───────┘  └──────┬───────┘  └──────────┬───────────────┘ │
-└─────────┼──────────────────┼──────────────────────┼──────────────────┘
-          │                  │                      │
-          └──────────────────┴──────────────────────┘
-                             │ REST API (JSON)
-          ┌──────────────────┴──────────────────────┐
-          │         API GATEWAY (FastAPI)           │
-          │  ┌────────────────────────────────────┐ │
-          │  │ /recommend  │ /similar  │ /health │ │
-          │  └────────────────────────────────────┘ │
-          └──────────────────┬──────────────────────┘
-                             │
-          ┌──────────────────┴──────────────────────┐
-          │      RECOMMENDATION ENGINE CORE         │
-          ├─────────────────────────────────────────┤
-          │                                         │
-          │  ┌─────────────────────────────────┐   │
-          │  │   Hybrid Scoring Algorithm      │   │
-          │  │  Score = 0.7×CF + 0.3×Pop×Conf  │   │
-          │  └────────┬───────────────┬────────┘   │
-          │           │               │            │
-          │  ┌────────▼────────┐  ┌──▼──────────┐ │
-          │  │ Collaborative   │  │ Popularity  │ │
-          │  │ Filtering (CF)  │  │ + Confidence│ │
-          │  └─────────────────┘  └─────────────┘ │
-          │                                         │
-          │  ┌─────────────────────────────────┐   │
-          │  │   Content-Based Similarity      │   │
-          │  │   (TF-IDF + Cosine Distance)    │   │
-          │  └─────────────────────────────────┘   │
-          └──────────────────┬──────────────────────┘
-                             │
-          ┌──────────────────┴──────────────────────┐
-          │         DATA & MODEL LAYER              │
-          ├─────────────────────────────────────────┤
-          │  catalog_enriched.csv  (4.84 MB)       │
-          │  cf_model.pkl          (784 KB)        │
-          │  catalog_artifacts.pkl (16.39 MB)      │
-          │  rnn_autocomplete.h5   (10.15 MB)      │
-          └─────────────────────────────────────────┘
-```
 
 ![Architectural Framework Diagram](./assets/extracted-diagram-p12-1.png)
 *Figure 2.1: Four-layer modular architecture showing data flow from client layer through API gateway, recommendation engine core, to data/model layer.*
