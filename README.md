@@ -57,6 +57,9 @@ This recommendation engine implements a **four-layer modular architecture** comb
           └─────────────────────────────────────────┘
 ```
 
+![Architectural Framework Diagram](./assets/extracted-diagram-p12-1.png)
+*Figure 2.1: Four-layer modular architecture showing data flow from client layer through API gateway, recommendation engine core, to data/model layer.*
+
 ### Four-Layer Modular Architecture
 
 **1. Data Layer**  
@@ -116,6 +119,18 @@ Product Input → Word2Vec Embedding (semantic vectors)
                         ↓
               Context-Aware Recommendations
 ```
+
+![Algorithm Flowchart](./assets/extracted-diagram-p17-1.png)
+*Figure 3.1: High-level algorithm flowchart showing the recommendation workflow from data input to output delivery.*
+
+![Machine Learning Recommendation Process](./assets/extracted-diagram-p18-1.png)
+*Figure 3.2: Machine learning recommendation process using TF-IDF vectorization and KNN similarity matching.*
+
+![Deep Learning Recommendation Process](./assets/extracted-diagram-p19-1.png)
+*Figure 3.3: Deep learning recommendation process using Word2Vec embeddings, Hybrid Autoencoder, and Deep KNN for semantic similarity.*
+
+![System Workflow Diagram](./assets/extracted-diagram-p20-1.png)
+*Figure 3.4: Complete system workflow showing interaction between user input, ML/DL models, and recommendation output.*
 
 **Key Innovation**: Unlike traditional TF-IDF keyword matching, the deep learning pipeline understands semantic relationships. Products with similar meanings but different terminology are correctly matched (e.g., "smartphone" and "mobile device").
 
@@ -318,6 +333,15 @@ python test_local.py
 
 Expected output: Successfully loads catalog and returns recommendation results
 
+![Testbench Output](./assets/extracted-diagram-p21-1.jpeg)
+*Figure 4.1: Terminal testbench output showing successful model initialization and recommendation results.*
+
+![Web Interface Output](./assets/extracted-diagram-p22-1.png)
+*Figure 4.2: Production web interface displaying personalized product recommendations with filters and search functionality.*
+
+![Performance Results](./assets/extracted-diagram-p23-1.png)
+*Figure 4.3: System performance metrics and evaluation results demonstrating recommendation accuracy and latency.*
+
 ### Project Structure
 
 ```
@@ -339,6 +363,7 @@ AI recommendation/
 │   ├── catalog_artifacts.pkl     # TF-IDF vectorizer + matrix
 │   ├── rnn_autocomplete.h5       # RNN model for autocomplete
 │   └── rnn_artifacts.pkl         # Tokenizer for RNN
+├── assets/                        # Documentation diagrams
 ├── amazon.csv                     # Raw dataset (4.52 MB)
 └── README.md                      # This file
 ```

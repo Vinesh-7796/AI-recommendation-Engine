@@ -102,3 +102,6 @@ yarn.lock
 # Project Reports & Documentation
 *.pdf
 Recommendation Engine*.pdf
+
+# Image Extraction Script
+extract_images.py
